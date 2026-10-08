@@ -1,0 +1,28 @@
+# AR-601M arm. Lengths are nominal, in metres; angles in degrees.
+#
+# Factor chain this file describes (see the homework's Task 1):
+#   0T6 = Rz(t1) Tz(l1) Rz(10deg*b) Ry(t2) Ty(-l2*b) Rx(t3) Tz(-l3)
+#         Rz(t4) Ry(t5) Rx(t6) Tx(l4)
+# b = +1 for the right arm, b = -1 for the left arm. The 10 degree
+# shoulder tilt is a fixed offset, not a joint, so it has no entry below.
+arm: right          # right -> b = +1, left -> b = -1
+shoulder_offset_deg: 10.0
+
+links:
+  - {name: l1, length: 0.40, axis: [0, 0,  1], mass: null, inertia: null, stiffness: null}
+  - {name: l2, length: 0.18, axis: [0, -1, 0], mass: null, inertia: null, stiffness: null}
+  - {name: l3, length: 0.30, axis: [0, 0, -1], mass: null, inertia: null, stiffness: null}
+  - {name: l4, length: 0.12, axis: [1, 0,  0], mass: null, inertia: null, stiffness: null}
+  # mass, inertia and stiffness are placeholders for later homeworks;
+  # this homework only ever reads `length` and `axis`.
+
+joints:
+  - {name: t1, type: R, axis: [0, 0, 1], limit_deg: [-90,   90], parent: base,    child: l1}
+  - {name: t2, type: R, axis: [0, 1, 0], limit_deg: [-105, 105], parent: l1,      child: l2}
+  - {name: t3, type: R, axis: [1, 0, 0], limit_deg: [-45,   45], parent: l2,      child: l3}
+  - {name: t4, type: R, axis: [0, 0, 1], limit_deg: [-90,   90], parent: l3,      child: wrist1}
+  - {name: t5, type: R, axis: [0, 1, 0], limit_deg: [-90,   90], parent: wrist1,  child: wrist2}
+  - {name: t6, type: R, axis: [1, 0, 0], limit_deg: [-90,   90], parent: wrist2,  child: l4}
+  # t4, t5 and t6 share one point (the wrist centre): no link length
+  # between them, which is exactly the fact the spherical-wrist
+  # decoupling of Task 3 depends on.

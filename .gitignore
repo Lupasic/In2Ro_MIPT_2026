@@ -1,0 +1,28 @@
+# Third-party source material — 238 MB, not ours to redistribute.
+# SOURCES.md plus tools/check_sources.py provide reproducibility instead.
+sources/
+
+# Build products. Keyed to the deck name, because vector figures such as
+# two_bros_fig.pdf are inputs and stay tracked.
+In2Ro_*.pdf
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.nav
+*.snm
+*.toc
+*.out
+*.synctex.gz
+*.xdv
+
+# Scratch
+.build/
+.render/
+blocks/
+_preview_*.tex
+__pycache__/
+.pytest_cache/
+
+# Agent execution scaffolding — never committed, never published.
+.superpowers/

@@ -1,0 +1,49 @@
+name: build
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  decks:
+    if: github.repository == 'Lupasic/In2Ro_MIPT_2026'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find decks
+        run: find slides -name 'In2Ro_*.tex' -print | sort | tee decks.txt
+
+      - name: Compile
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: "**/In2Ro_*.tex"
+          glob_root_file: true
+          latexmk_use_xelatex: true
+          args: -xelatex -interaction=nonstopmode -halt-on-error
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: QA gate
+        env:
+          IN2RO_PUBLIC: '1'
+        run: |
+          while IFS= read -r deck; do
+            week=$(basename "$(dirname "$deck")")
+            kind=$(basename "$(dirname "$(dirname "$deck")")")
+            python tools/check_deck.py --kind "$kind" --week "$week" --no-compile
+          done < decks.txt
+
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: decks
+          path: slides/**/In2Ro_*.pdf

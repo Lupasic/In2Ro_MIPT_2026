@@ -1,0 +1,40 @@
+name: guard
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  no-internal-material:
+    if: github.repository == 'Lupasic/In2Ro_MIPT_2026'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Refuse internal material
+        run: |
+          python - <<'PY'
+          import subprocess
+          import sys
+
+          sys.path.insert(0, "tools")
+          from in2ro import publish_rules as R
+
+          tracked = subprocess.run(
+              ["git", "ls-files"], check=True, capture_output=True, text=True
+          ).stdout.splitlines()
+          leaks = [(path, R.is_excluded(path)) for path in tracked if R.is_excluded(path)]
+          for path, rule in leaks:
+              print(f"FAIL {path} ({rule})")
+          if leaks:
+              print(f"{len(leaks)} internal path(s) on the public branch")
+              raise SystemExit(1)
+          print(f"OK {len(tracked)} files, none internal")
+          PY

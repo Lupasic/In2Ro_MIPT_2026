@@ -1,0 +1,141 @@
+% \documentclass[aspectratio=169,notes]{beamer}
+\documentclass[aspectratio=169]{beamer}
+\usetheme[faculty=phil]{fibeamer}
+\usepackage{polyglossia}
+\setmainlanguage{english} %% main locale instead of `english`, you
+%% can typeset the presentation in either Czech or Slovak,
+%% respectively.
+\setotherlanguages{russian} %% The additional keys allow
+%%
+%%   \begin{otherlanguage}{czech}   ... \end{otherlanguage}
+%%   \begin{otherlanguage}{slovak}  ... \end{otherlanguage}
+%%
+%% These macros specify information about the presentation
+\title[Introduction to Robotics (In2Ro)]{Introduction to Robotics, Lecture 4} %% that will be typeset on the
+\subtitle{Differential Kinematics 
+\\ Joint and Tool Velocities \\ Independent Study Resources  } %% title page.
+\author{Oleg Bulichev}
+%% These additional packages are used within the document:
+\usepackage{ragged2e}  % `\justifying` text
+\usepackage{booktabs}  % Tables
+\usepackage{tabularx}
+\usepackage{tikz}      % Diagrams
+\usetikzlibrary{calc, shapes, backgrounds, trees, positioning, arrows.meta}
+\usetikzlibrary{decorations.pathreplacing,calligraphy,calc,graphs}
+\usepackage{amsmath, amssymb}
+\usepackage{url}       % `\url`s
+\usepackage{listings}  % Code listings
+\usepackage{floatrow}
+\usepackage{subcaption}
+\usepackage{mathtools}
+\usepackage{todonotes}
+\usepackage{fontspec}
+\usepackage{multicol}
+\usepackage{pdfpages}
+\usepackage{wrapfig}
+\usepackage{qrcode}
+\usepackage{animate}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{colortbl}
+
+\graphicspath{{resources/}}
+\frenchspacing
+
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+\usetikzlibrary{graphs}
+
+% \usepackage[backend=biber,style=ieee,autocite=footnote]{biblatex}
+% \addbibresource{biblio.bib}
+% \DefineBibliographyStrings{english}{%
+%   bibliography = {References},}
+
+\newcommand{\oleg}[2][] {\todo[color=red, #1] {OLEG:\\ #2}}
+\newcommand{\fbckg}[1]{\usebackgroundtemplate{\includegraphics[width=\paperwidth]{#1}}}%frame background
+
+\usepackage[framemethod=TikZ]{mdframed}
+\newcommand{\dbox}[1]{
+\begin{mdframed}[roundcorner=3pt, backgroundcolor=yellow, linewidth=0]
+\vspace{1mm}
+{#1}
+\vspace{1mm}
+\end{mdframed}
+}
+
+\begin{document}
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+
+\fbckg{fibeamer/figs/title_page.png}
+\frame[c]{\setcounter{framenumber}{0}
+    \usebeamerfont{title}%
+    \usebeamercolor[fg]{title}%
+    \begin{minipage}[b][6.5\baselineskip][b]{\textwidth}%
+        \textcolor{black}{\raggedright\inserttitle}
+    \end{minipage}
+    % \vskip-1.5\baselineskip
+
+    \usebeamerfont{subtitle}%
+    \usebeamercolor[fg]{framesubtitle}%
+    \begin{minipage}[b][3\baselineskip][b]{\textwidth}
+        \raggedright%
+        \insertsubtitle%
+    \end{minipage}
+    \vskip.25\baselineskip
+}
+
+\fbckg{fibeamer/figs/common.png}
+
+\begin{frame}[t]{Differential Kinematics}
+    \begin{otherlanguage}{russian}
+    Тема недели — дифференциальная кинематика. Она описывает связь между
+    скоростями в суставах робота и линейной и угловой скоростями рабочего
+    органа. Эта связь нужна для управления движением, построения траекторий
+    и анализа сингулярных конфигураций.
+
+    \bigskip
+    Ниже представлены три варианта материалов. Авторы объясняют тему
+    по-разному: начните с наиболее понятного объяснения, затем
+    ознакомьтесь и с остальными.
+    \end{otherlanguage}
+\end{frame}
+
+\begin{frame}[t]{Course Material Robotics 1}
+    \begin{itemize}
+        \item Prof. Alessandro De Luca — Sapienza University of Rome.
+        \item \href{https://www.diag.uniroma1.it/deluca/rob1_en/11_DifferentialKinematics.pdf}{11. Differential Kinematics — PDF}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Introduction to Robotics — Stanford}
+    \begin{itemize}
+        \item Prof. Oussama Khatib — Stanford Engineering Everywhere.
+        \item \href{https://www.youtube.com/watch?v=fwHc0a8DMQ0&list=PL65CC0384A1798ADF&index=6}{Lecture 6: The Jacobian and instantaneous kinematics}
+        \item \href{https://www.youtube.com/watch?v=6SRTAoyzC6A&list=PL65CC0384A1798ADF&index=7}{Lecture 7: Jacobians and singularities}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Modern Robotics — Chapter 5}
+    \begin{itemize}
+        \item Kevin M. Lynch and Frank C. Park — Northwestern University.
+        \item \href{https://www.youtube.com/watch?v=KbI8HN3imtQ&list=PLggLP4f-rq02vX0OQQ5vrCxbJrzamYDfx&index=26}{Chapter 5.1.1: Space Jacobian}
+        \item \href{https://www.youtube.com/watch?v=69HeL2XvL9Y&list=PLggLP4f-rq02vX0OQQ5vrCxbJrzamYDfx&index=27}{Chapter 5.1.2: Body Jacobian}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Reference Materials}
+    \begin{itemize}
+        \item A. De Luca --- 11 DifferentialKinematics
+        \item Oussama Khatib --- Differential kinematics
+        \item Kevin M. Lynch and Frank C. Park --- Space and body Jacobians
+    \end{itemize}
+\end{frame}
+
+
+\fbckg{fibeamer/figs/last_page.png}
+\frame[plain]{}
+
+\end{document}
