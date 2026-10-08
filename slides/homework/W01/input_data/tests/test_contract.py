@@ -4,11 +4,11 @@ Checks only the contract this skeleton promises, never an answer:
 
   - the model file loads and has six joints and four links, each with
     the fields a reader of the factor chain needs;
-  - ``FK``, ``IK`` and ``Jacobian`` exist, are callable, and take the
+  - ``FK``, ``IK`` and ``DifferentialKinematics`` exist, are callable, and take the
     right number of arguments.
 
 It does **not** check that ``FK`` returns a correct 4x4, that ``IK``
-finds all valid branches, or that ``Jacobian`` matches a finite-difference
+finds all valid branches, or that ``DifferentialKinematics`` matches a finite-difference
 check -- those are the student's own tests to write once Tasks 2, 3, 4
 and 5 replace the ``NotImplementedError`` stubs. A test suite that
 passed those checks against this skeleton would prove nothing.
@@ -64,9 +64,9 @@ def test_IK_exists_and_takes_two_arguments():
     assert len(inspect.signature(kinematics.IK).parameters) == 2
 
 
-def test_Jacobian_exists_and_takes_two_arguments():
-    assert callable(kinematics.Jacobian)
-    assert len(inspect.signature(kinematics.Jacobian).parameters) == 2
+def test_DifferentialKinematics_exists_and_takes_two_arguments():
+    assert callable(kinematics.DifferentialKinematics)
+    assert len(inspect.signature(kinematics.DifferentialKinematics).parameters) == 2
 
 
 def test_the_stubs_still_raise_delete_this_test_once_you_implement_FK():

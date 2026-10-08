@@ -7,7 +7,7 @@ for, not a mandate to use Python.
   submit, and one command reproduces every number your report quotes:
   `pixi run check`, or `docker build -t ar601m . && docker run ar601m`.
 - The three required signatures are `FK(q, robot)`, `IK(T, robot)` and
-  `Jacobian(q, robot)` -- see `src/kinematics.py` for what each must
+  `DifferentialKinematics(q, robot)` -- see `src/kinematics.py` for what each must
   accept and return, and `tests/test_contract.py` for the checks that
   gate them (the contract only; never the answer).
 - Also provide a runnable Task 2 angle-to-arm-and-pose visualizer, a Task 3

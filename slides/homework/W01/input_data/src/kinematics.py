@@ -44,8 +44,8 @@ def IK(T, robot):
     raise NotImplementedError("Task 3")
 
 
-def Jacobian(q, robot):
-    """Geometric Jacobian.
+def DifferentialKinematics(q, robot):
+    """Differential kinematics.
 
     q: six joint values, same convention as ``FK``.
     robot: the dict returned by ``robot_model.load()``.
