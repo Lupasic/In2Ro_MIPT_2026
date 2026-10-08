@@ -13,7 +13,7 @@
 %% These macros specify information about the presentation
 \title[Introduction to Robotics (In2Ro)]{Introduction to Robotics, Homework 1} %% that will be typeset on the
 \subtitle{The AR-601M arm
-\\ Forward and inverse kinematics, Jacobian, singularities \\ \  } %% title page.
+\\ Forward and inverse kinematics, differential kinematics, singularities \\ \  } %% title page.
 \author{Oleg Bulichev}
 %% These additional packages are used within the document:
 \usepackage{ragged2e}  % `\justifying` text
@@ -89,8 +89,6 @@
 
 \fbckg{fibeamer/figs/common.png}
 
-\input{input_data/scheme.tex}
-
 \begin{frame}[t]{What this homework is}
 \framesubtitle{One arm, six tasks, eighteen hours}
     AR-601M is a 41-DOF humanoid robot. This homework treats one of its two arms in
@@ -101,7 +99,7 @@
         \item \textbf{Forward} kinematics: joint angles $\to$ tool pose.
         \item \textbf{Inverse} kinematics, analytical and numerical: tool pose $\to$ joint
               angles.
-        \item The \textbf{Jacobian}, and where it loses rank: \textbf{singularities}.
+        \item \textbf{Differential kinematics} and \textbf{singularities}.
     \end{itemize}
     \medskip
 
@@ -128,46 +126,35 @@
     \end{figure}
 \end{frame}
 
-\begin{frame}[t]{The kinematic scheme and the chain}
-\framesubtitle{${}^0T_6 = R_z(t_1)\,T_z(l_1)\,R_z(10^\circ b)\,R_y(t_2)\,T_y(-l_2 b)\,R_x(t_3)\,T_z(-l_3)\,R_z(t_4)\,R_y(t_5)\,R_x(t_6)\,T_x(l_4)$}
-    \vspace{-0.6cm}
-    \begin{figure}[H]
-        \centering\arsixonescheme
-        \label{fig:scheme_deck}
-    \end{figure}
-\end{frame}
-
-\begin{frame}[t]{What you will be able to do}
-    \begin{multicols}{2}
-        \begin{itemize}
-            \item Derive and implement forward kinematics for a serial chain with a
-                  spherical wrist.
-            \item Solve an inverse-kinematics target analytically, in closed form, keeping
-                  every branch, not just the first one found.
-            \item Solve the same target numerically and reconcile the answer against the
-                  analytical branches.
-            \item Build a manipulator Jacobian two independent ways and locate where it
-                  loses rank.
-        \end{itemize}
-    \end{multicols}
-\end{frame}
-
 \begin{frame}[t]{The six tasks}
     \begin{multicols}{2}
         \begin{itemize}
             \item \textbf{1.} Kinematic model
             \item \textbf{2.} FK: angles $\to$ arm and pose
-            \item \textbf{3.} IK: pose $\to$ every valid arm
-            \item \textbf{4.} Numerical inverse kinematics
-            \item \textbf{5.} Jacobian
-            \item \textbf{6.} Singularity and branch-count maps
+            \item \textbf{3.} Analytical IK: pose $\to$ all feasible branches
+            \item \textbf{4.} Numerical IK: solve from multiple seeds
+            \item \textbf{5.} Differential kinematics
+            \item \textbf{6.} Singularity and solution-count maps
         \end{itemize}
     \end{multicols}
     \medskip
 
-    Visualize Task 2's arm and transform, Task 3's unique valid branches, and
-    Task 6's conditioning and fixed-orientation branch counts. Full requirements
-    are in handout \S4.
+    Full requirements and evidence for every task are in handout \S4.
+\end{frame}
+
+\begin{frame}[t]{Required visualizations}
+    \begin{enumerate}
+        \item \textbf{FK:} enter six joint angles; draw the manipulator and print
+              the resulting homogeneous matrix $T$.
+        \item \textbf{Analytical IK:} enter a pose from FK or a position and
+              ZYX Euler orientation; draw \emph{every distinct feasible}
+              configuration and print each complete six-angle vector.
+        \item \textbf{Singularities:} plot singularity information and a
+              fixed-orientation workspace slice. Use a continuous color
+              scale for the number of feasible IK configurations, from
+              zero to the maximum attained in this case.
+    \end{enumerate}
+    Mark unresolved targets and continuous families separately from finite counts.
 \end{frame}
 
 \begin{frame}[t]{What you hand in}
@@ -176,9 +163,9 @@
             \item A \texttt{pixi.toml} or a \texttt{Dockerfile} at the repository root.
             \item One command reproduces the report's numbers, example images and
                   maps from a clean checkout.
-            \item Three functions, exactly these roles: \texttt{FK(q, robot)},
-                  \texttt{IK(T, robot)}, \texttt{Jacobian(q, robot)} --- any language, the
-                  same three signatures.
+            \item Three operations: \texttt{FK(q, robot)},
+                  \texttt{IK(T, robot)}, \texttt{DifferentialKinematics(q, robot)}
+                  --- any language.
         \end{itemize}
     \end{block}
     \medskip

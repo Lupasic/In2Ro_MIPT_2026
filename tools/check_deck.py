@@ -6,6 +6,7 @@
 import argparse
 import os
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -50,6 +51,11 @@ def compile_deck(folder, deck, report):
                     if l.startswith(("Overfull \\hbox", "Overfull \\vbox"))]
         if overfull:
             report.warn(f"{len(overfull)} overfull horizontal/vertical boxes in {log.name}")
+    compiled = build / (deck.stem + ".pdf")
+    if not compiled.is_file():
+        report.fail(f"latexmk did not create {compiled.name}")
+        return
+    shutil.copyfile(compiled, deck.with_suffix(".pdf"))
 
 
 def check_structure(text, skeleton, kind, report):
@@ -88,6 +94,9 @@ def check_counts(folder, text, kind, report):
     frames = T.frame_count(text)
     plan = folder / "PLAN.md"
     ideas = folder / "IDEAS.md"
+    if kind == "quiz" and not ideas.exists():
+        report.fail("a quiz week needs IDEAS.md with its approved questions")
+        return
     if kind == "lecture":
         # The Reference Materials frame is generated from the plan, not listed in it.
         content = frames - 1 if T.has_reference_frame(text) else frames
@@ -105,8 +114,15 @@ def check_counts(folder, text, kind, report):
             r"^### (?:Task|Question) (\d+)", ideas_text, re.M)]
         approved = len(approved_numbers)
         if kind == "quiz" and approved:
+            titles = T.frame_titles(text)
+            expected_title = f"Quiz {int(folder.name[1:])}"
+            if not titles or titles[0] != expected_title:
+                report.fail(f"{expected_title} must be the first content frame after the title")
+            if any(title not in ("Answers", "Answer", "Solutions", "Solution")
+                   for title in titles[1:]):
+                report.fail("only answer or solution frames may follow the Quiz frame")
             quiz_frames = [body for title, body in FRAME_BLOCK_RE.findall(T.body_code_only(text))
-                           if re.match(r"^Quiz(?:\s|$)", title.strip(), re.I)]
+                           if title.strip() == expected_title]
             if len(quiz_frames) != 1:
                 report.fail(f"quiz questions must appear together on exactly one Quiz frame; "
                             f"found {len(quiz_frames)}")
@@ -194,7 +210,7 @@ def main(argv=None) -> int:
     check_counts(folder, text, args.kind, report)
     check_references(folder, text, args.kind, report)
     check_scaffolding(folder, report)
-    if not args.no_compile:
+    if not args.no_compile and not report.failures:
         compile_deck(folder, deck, report)
 
     for warning in report.warnings:

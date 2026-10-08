@@ -295,24 +295,6 @@
     \includegraphics[width=\textwidth,height=0.8\paperheight,keepaspectratio]{dl11_p032_full.png}
 \end{frame}
 
-\begin{frame}[t]{Derive the 2R Jacobian}
-    \framesubtitle{Linear velocity of point $P$: $\dot p=J(q)\dot q$}
-    \normalsize
-    \[
-        x_P=l_1\cos q_1+l_2\cos(q_1+q_2)
-    \]
-    \[
-        y_P=l_1\sin q_1+l_2\sin(q_1+q_2)
-    \]
-    \[
-        J(q)=\frac{\partial(x_P,y_P)}{\partial(q_1,q_2)}
-        =\begin{bmatrix}?&?\\[3mm]
-        ?&?\end{bmatrix}
-    \]
-    \scriptsize\textbf{Notation.} $p=(x_P,y_P)^{\mathsf T}$: position of $P$; $q=(q_1,q_2)^{\mathsf T}$: joint coordinates; a dot denotes velocity; $J(q)$ maps joint velocity to point velocity.
-    \scriptsize\alert{\textbf{Question.} Each column: velocity of $P$ from unit speed of its joint?}
-\end{frame}
-
 \begin{frame}[t]{What is lost in the stretched pose?}
     \framesubtitle{$l_1=l_2=1$ m, $q_1=q_2=0$}
     \begin{columns}[T,onlytextwidth]

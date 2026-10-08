@@ -29,11 +29,11 @@ Slides may use publicly available material from these and other sources. Each le
 <!-- BEGIN GENERATED LECTURES -->
 | Week | Topic | Materials |
 |---:|---|---|
-| 1 | Introduction | [PDF](slides/lecture/W01/In2Ro_lec01.pdf) · [source](slides/lecture/W01/In2Ro_lec01.tex) |
-| 2 | Direct kinematics and DH notation | [PDF](slides/lecture/W02/In2Ro_lec02.pdf) · [source](slides/lecture/W02/In2Ro_lec02.tex) |
-| 3 | Differential Kinematics | [PDF](slides/lecture/W03/In2Ro_lec03.pdf) · [source](slides/lecture/W03/In2Ro_lec03.tex) |
-| 4 | Differential Kinematics — study resources | [PDF](slides/lecture/W04/In2Ro_lec04.pdf) · [source](slides/lecture/W04/In2Ro_lec04.tex) |
-| 5 | Workspace and Singularities | [PDF](slides/lecture/W05/In2Ro_lec05.pdf) · [source](slides/lecture/W05/In2Ro_lec05.tex) |
+| 1 | Introduction | [PDF](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W01/In2Ro_lec01.pdf) · [source](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W01/In2Ro_lec01.tex) |
+| 2 | Direct kinematics and DH notation | [PDF](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W02/In2Ro_lec02.pdf) · [source](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W02/In2Ro_lec02.tex) |
+| 3 | Differential Kinematics | [PDF](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W03/In2Ro_lec03.pdf) · [source](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W03/In2Ro_lec03.tex) |
+| 4 | Differential Kinematics | [PDF](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W04/In2Ro_lec04.pdf) · [source](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W04/In2Ro_lec04.tex) |
+| 5 | Workspace and Singularities | [PDF](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W05/In2Ro_lec05.pdf) · [source](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W05/In2Ro_lec05.tex) |
 <!-- END GENERATED LECTURES -->
 
 ## Homework
@@ -43,10 +43,10 @@ The homework deck and handout are available below. Quiz materials and homework s
 <!-- BEGIN GENERATED HOMEWORK -->
 | # | Topic | Materials |
 |---:|---|---|
-| 1 | The AR-601M arm | [PDF](slides/homework/W01/In2Ro_hw01.pdf) · [source](slides/homework/W01/In2Ro_hw01.tex) |
+| 1 | The AR-601M arm | [PDF](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/homework/W01/In2Ro_hw01.pdf) · [source](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/homework/W01/In2Ro_hw01.tex) |
 
-[Homework 1 handout](slides/homework/W01/resources/hw01_handout.pdf)
-[Homework 1 starter files](slides/homework/W01/input_data/)
+[Homework 1 handout](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/homework/W01/resources/hw01_handout.pdf)
+[Homework 1 starter files](https://github.com/Lupasic/In2Ro_MIPT_2026/tree/main/slides/homework/W01/input_data)
 <!-- END GENERATED HOMEWORK -->
 
 ## Building the slides
