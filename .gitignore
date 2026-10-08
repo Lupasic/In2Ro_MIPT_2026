@@ -19,6 +19,10 @@ In2Ro_*.pdf
 # Scratch
 .build/
 .render/
+tmp/
+.pixi/
+.pytest_cache/
+partial_movie_files/
 blocks/
 _preview_*.tex
 __pycache__/

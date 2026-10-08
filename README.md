@@ -46,6 +46,7 @@ The homework deck and handout are available below. Quiz materials and homework s
 | 1 | The AR-601M arm | [PDF](slides/homework/W01/In2Ro_hw01.pdf) · [source](slides/homework/W01/In2Ro_hw01.tex) |
 
 [Homework 1 handout](slides/homework/W01/resources/hw01_handout.pdf)
+[Homework 1 starter files](slides/homework/W01/input_data/)
 <!-- END GENERATED HOMEWORK -->
 
 ## Building the slides

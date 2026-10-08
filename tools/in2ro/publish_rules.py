@@ -22,6 +22,8 @@ EXCLUDED_FILES = (
     "CLAUDE.md",
     "README_INTERNAL.md",
 )
+EXCLUDED_CACHE_DIRS = {".pixi", ".pytest_cache", "__pycache__", ".build",
+                       ".render", "tmp", "partial_movie_files"}
 
 EXCLUDED_NAMES = (
     "PLAN.md",
@@ -55,6 +57,8 @@ WEEK_FIGURE = "*.pdf"
 def is_excluded(path: str) -> str | None:
     path = PurePosixPath(path).as_posix()
     parts = path.split("/")
+    if any(part in EXCLUDED_CACHE_DIRS for part in parts[:-1]):
+        return "under a generated cache directory"
 
     for prefix in EXCLUDED_PREFIXES:
         if path.startswith(prefix):
