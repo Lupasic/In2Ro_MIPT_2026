@@ -17,6 +17,7 @@ PREFIXES = {
     "Skillbox": "SB",
     "Siegwart": "SW",
     "HWs": "AH",
+    "Bulichev": "OB",
 }
 
 AUTHORS = {
@@ -25,6 +26,7 @@ AUTHORS = {
     "SB": "Skillbox",
     "SW": "Siegwart, Nourbakhsh, Scaramuzza",
     "AH": "A. De Luca",
+    "OB": "O. Bulichev",
 }
 
 INDEXED_SUFFIXES = {".pdf", ".pptx", ".ipynb", ".docx", ".md"}

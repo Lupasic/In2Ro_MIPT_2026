@@ -18,7 +18,7 @@ from in2ro import paths, texutil as T
 MAX_ASSET = 5 * 1024 * 1024
 WARN_ASSET = 800 * 1024
 PAGE_NUMBER_RE = re.compile(r"\b(?:p\.?|pp\.?|page|pages|slide|slides)\s*\d", re.I)
-HANDLE_RE = re.compile(r"\b((?:DL|KL|SB|SW|AH)_[0-9A-Za-z_]+)\b")
+HANDLE_RE = re.compile(r"\b((?:DL|KL|SB|SW|AH|OB)_[0-9A-Za-z_]+)\b")
 FRAME_BLOCK_RE = re.compile(
     r"\\begin\{frame\}(?:\[[^\]]*\])?\{([^{}\n]*)\}(.*?)\\end\{frame\}", re.S)
 QUIZ_QUESTION_LABEL_RE = re.compile(r"\\textbf\{Question\s+(\d+)\}")

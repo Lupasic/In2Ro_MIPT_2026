@@ -34,6 +34,9 @@ Slides may use publicly available material from these and other sources. Each le
 | 3 | Differential Kinematics | [PDF](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W03/In2Ro_lec03.pdf) · [source](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W03/In2Ro_lec03.tex) |
 | 4 | Differential Kinematics | [PDF](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W04/In2Ro_lec04.pdf) · [source](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W04/In2Ro_lec04.tex) |
 | 5 | Workspace and Singularities | [PDF](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W05/In2Ro_lec05.pdf) · [source](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W05/In2Ro_lec05.tex) |
+| 6 | Programming real manipulators | [PDF](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W06/In2Ro_lec06.pdf) · [source](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W06/In2Ro_lec06.tex) |
+| 7 | Mobile robots | [PDF](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W07/In2Ro_lec07.pdf) · [source](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W07/In2Ro_lec07.tex) |
+| 8 | Wheel constraints and holonomy | [PDF](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W08/In2Ro_lec08.pdf) · [source](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/lecture/W08/In2Ro_lec08.tex) |
 <!-- END GENERATED LECTURES -->
 
 ## Homework
@@ -44,6 +47,8 @@ The homework deck and handout are available below. Quiz materials and homework s
 | # | Topic | Materials |
 |---:|---|---|
 | 1 | The AR-601M arm | [PDF](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/homework/W01/In2Ro_hw01.pdf) · [source](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/homework/W01/In2Ro_hw01.tex) |
+| Hard 1 | Manipulation: UR5, IIMT CI-05, Limo CoRoT arm | [PDF](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/homework/Hard_1/In2Ro_hw_hard1.pdf) · [source](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/homework/Hard_1/In2Ro_hw_hard1.tex) |
+| Hard 2 | Mobile robots: JetBot, Scout 2, Limo CoRoT | [PDF](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/homework/Hard_2/In2Ro_hw_hard2.pdf) · [source](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/homework/Hard_2/In2Ro_hw_hard2.tex) |
 
 [Homework 1 handout](https://github.com/Lupasic/In2Ro_MIPT_2026/blob/main/slides/homework/W01/resources/hw01_handout.pdf)
 [Homework 1 starter files](https://github.com/Lupasic/In2Ro_MIPT_2026/tree/main/slides/homework/W01/input_data)

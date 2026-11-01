@@ -1,7 +1,7 @@
 """PLAN.md is a specification, not LaTeX. One '### FNN - title' entry per frame."""
 import re
 
-HANDLE_RE = re.compile(r"\b((?:DL|KL|SB|SW|AH)_[0-9A-Za-z_]+)\b")
+HANDLE_RE = re.compile(r"\b((?:DL|KL|SB|SW|AH|OB)_[0-9A-Za-z_]+)\b")
 FRAME_RE = re.compile(r"^###\s+(F\d+)\s*[-\u2013\u2014]+\s*(.*?)\s*$")
 
 
@@ -25,7 +25,7 @@ def parse(text) -> dict:
             current = {"id": match.group(1), "title": match.group(2), "sources": []}
             frames.append(current)
             continue
-        for handle in HANDLE_RE.findall(line):
+        for handle in HANDLE_RE.findall(re.sub(r"https?://\S+", "", line)):
             if current is not None and handle not in current["sources"]:
                 current["sources"].append(handle)
             if handle not in handles:

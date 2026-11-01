@@ -13,6 +13,7 @@ EXCLUDED_PREFIXES = (
     "archive/",
     "docs/",
     "slides/quiz/",
+    "slides/exam/",
     ".claude/",
     ".agents/",
 )
@@ -45,7 +46,7 @@ TOOLS_PUBLISHED = ("tools/check_deck.py", "tools/in2ro/")
 # A week folder is a whitelist, never a blacklist. Authoring leaves teaching notes,
 # provenance updates, scratch source lists and editor backups beside the deck, and no
 # list of their names can be kept complete — so name what students may have instead.
-WEEK_RE = re.compile(r"^slides/(?P<kind>lecture|homework)/W(?P<week>[0-9][0-9])/(?P<rest>.+)$")
+WEEK_RE = re.compile(r"^slides/(?P<kind>lecture|homework)/(?P<week>W[0-9][0-9]|Hard_[0-9]+)/(?P<rest>.+)$")
 WEEK_DIRS = ("resources/", "input_data/", "fibeamer/", "fonts/")
 WEEK_FILES = ("beamerthemefibeamer.sty", "latexmkrc", ".latexmkrc", "biblio.bib")
 WEEK_DECK = "In2Ro_*.tex"
@@ -86,7 +87,9 @@ def is_excluded(path: str) -> str | None:
         if "/" not in rest and fnmatch.fnmatch(rest, WEEK_DECK):
             return None
         pdf_prefix = "lec" if match.group("kind") == "lecture" else "hw"
-        if rest == f"In2Ro_{pdf_prefix}{match.group('week')}.pdf":
+        week = match.group("week")
+        suffix = "_hard" + week[5:] if week.startswith("Hard_") else week[1:]
+        if rest == f"In2Ro_{pdf_prefix}{suffix}.pdf":
             return None
         if "/" not in rest and fnmatch.fnmatch(rest, WEEK_FIGURE) \
                 and not rest.startswith("In2Ro_"):

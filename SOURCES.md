@@ -9,6 +9,7 @@ numbers — and reindexing preserves it.
 
 | handle | file | pages | citation | sha256 |
 |---|---|---:|---|---|
+| `OB_Tactile_sensing_defence` | `sources/Bulichev/Tactile_sensing_defence.pdf` | 41 | O. Bulichev --- Tactile sensing experiments with a UR manipulator | `2e7aa3b1b0344562ecaca1c9c376e524ce7431c23c0f2b2034eec6ed0b8c739d` |
 | `DL_01_Calibration` | `sources/De_Luca/01_Calibration.pdf` | 16 | A. De Luca --- 01 Calibration | `4b091b614f0d40e05e2136e7191b3dd2a194b57f9cc93a9fc944ddeb972deb89` |
 | `DL_01_IndustrialRobots` | `sources/De_Luca/01_IndustrialRobots.pdf` | 75 | A. De Luca --- 01 IndustrialRobots | `1faa0cd1145e750d7068fc80afa396fcfd9c66274834a5b128d7e1230a2d5b4e` |
 | `DL_02_ServiceRobots` | `sources/De_Luca/02_ServiceRobots.pdf` | 69 | A. De Luca --- 02 ServiceRobots | `aaa53d4f592f573a76bd7df429106cc51d012b6a725c89a84fea5bc1d70cd537` |

@@ -40,9 +40,16 @@ def week_dir(kind: str, week: str) -> Path:
     return slides_dir() / kind / week
 
 
+def week_suffix(week: str) -> str:
+    """W09 -> '09' (In2Ro_hw09.tex); Hard_1 -> '_hard1' (In2Ro_hw_hard1.tex)."""
+    if week.startswith("Hard_"):
+        return "_hard" + week[len("Hard_"):]
+    return week[1:]
+
+
 def deck_path(kind: str, week: str) -> Path:
     short = _check_kind(kind)
-    return week_dir(kind, week) / f"In2Ro_{short}{week[1:]}.tex"
+    return week_dir(kind, week) / f"In2Ro_{short}{week_suffix(week)}.tex"
 
 
 def skeleton_path(kind: str) -> Path:
